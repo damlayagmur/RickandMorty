@@ -40,6 +40,7 @@ ext{
     coroutine_version = "1.4.2"
     lifecycle_version = "2.2.0"
     navigation_version = "2.3.4"
+    ssp_sdp_version = "1.0.6"
 }
 
 dependencies {
@@ -68,4 +69,8 @@ dependencies {
     //Navigation
     implementation "androidx.navigation:navigation-fragment-ktx:$navigation_version"
     implementation "androidx.navigation:navigation-ui-ktx:$navigation_version"
+
+    //SSP-SDP
+    implementation "com.intuit.sdp:sdp-android:$ssp_sdp_version"
+    implementation "com.intuit.ssp:ssp-android:$ssp_sdp_version"
 }
