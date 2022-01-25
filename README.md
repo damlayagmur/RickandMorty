@@ -1,6 +1,9 @@
 ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/cassianasoares/Rick-And-Morty-API-Kotlin)
 ![GitHub top language](https://img.shields.io/github/languages/top/cassianasoares/Rick-And-Morty-API-Kotlin?color=pink)
-![GitHub last commit](https://img.shields.io/github/last-commit/cassianasoares/Rick-And-Morty-API-Kotlin?color=green)
+![Latest Version](https://img.shields.io/badge/latestVersion-1.0-yellow)
+![Kotlin](https://img.shields.io/badge/language-kotlin-blue)
+![Mininum SDK Version](https://img.shields.io/badge/minSDK-28-orange)
+
 
 
 # Rick and Morty API
