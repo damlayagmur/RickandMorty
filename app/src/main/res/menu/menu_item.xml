@@ -10,9 +10,9 @@
         app:actionViewClass="androidx.appcompat.widget.SearchView"/>
 
     <item
-        android:id="@+id/item_filter"
+        android:id="@+id/item_grid"
         android:title="@string/search"
-        android:icon="@drawable/ic_baseline_filter_list_24"
+        android:icon="@drawable/ic_baseline_grid_on_24"
         app:showAsAction="always|collapseActionView" />
 
 </menu>
