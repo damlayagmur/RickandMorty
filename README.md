@@ -2,7 +2,7 @@
 ![GitHub top language](https://img.shields.io/github/languages/top/cassianasoares/Rick-And-Morty-API-Kotlin?color=pink)
 ![Latest Version](https://img.shields.io/badge/latestVersion-1.0-yellow)
 ![Kotlin](https://img.shields.io/badge/language-kotlin-blue)
-![Mininum SDK Version](https://img.shields.io/badge/minSDK-28-orange)
+![Mininum SDK Version](https://img.shields.io/badge/minSDK-21-orange)
 ![Android Gradle Version](https://img.shields.io/badge/androidGradleVersion-7.0.4-green)
 ![Gradle Version](https://img.shields.io/badge/gradleVersion-7.0.2-informational)
 
