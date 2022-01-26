@@ -5,8 +5,6 @@ import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
-import android.widget.GridLayout
-import android.widget.GridView
 import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -18,7 +16,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.damlayagmur.rickandmorty.R
 import com.damlayagmur.rickandmorty.adapter.CharacterAdapter
 import com.damlayagmur.rickandmorty.databinding.FragmentListBinding
-import com.damlayagmur.rickandmorty.model.Character
 import com.damlayagmur.rickandmorty.model.Info
 import com.damlayagmur.rickandmorty.model.Result
 import com.damlayagmur.rickandmorty.model.State
@@ -38,7 +35,6 @@ class ListFragment : Fragment(R.layout.fragment_list) {
     private lateinit var tempArrayList: ArrayList<Result?>
     private lateinit var characterAdapter: CharacterAdapter
     private var gridLayoutManager: GridLayoutManager = GridLayoutManager(context, 1)
-    var page = 1
     //var baseContext: Context? = null
 
     private val binding by viewBinding(FragmentListBinding::bind)
@@ -48,6 +44,7 @@ class ListFragment : Fragment(R.layout.fragment_list) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setHasOptionsMenu(true)
+
 
         recyclerView = binding.recyclerView
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
@@ -67,15 +64,6 @@ class ListFragment : Fragment(R.layout.fragment_list) {
 
         observeLiveData()
 
-
-        binding.gridView.setOnClickListener {
-            //recyclerView.layoutManager.toString()
-            //if(recyclerView.layoutManager == LinearLayoutManager(requireContext())){
-            recyclerView.layoutManager = GridLayoutManager(requireContext(), 1)
-            //}else{
-            //recyclerView.layoutManager = LinearLayoutManager(requireContext())
-            // }
-        }
     }
 
     /*private fun nextPage(): Int {
@@ -122,13 +110,14 @@ class ListFragment : Fragment(R.layout.fragment_list) {
     }
 
     private fun setCharacterRecyclerView(characterList1: List<Result?>?) {
-        if (characterList?.isNotEmpty() == true) {
-            characterAdapter = CharacterAdapter(characterList)
+        if (characterList1?.isNotEmpty() == true) {
+            characterAdapter = CharacterAdapter(characterList1, gridLayoutManager)
             recyclerView.adapter = characterAdapter
 
-            characterAdapter.setOnItemClickListener(object : CharacterAdapter.onItemClickListener {
+            characterAdapter.setOnItemClickListener(object :
+                CharacterAdapter.onAdapterItemClickListener {
                 override fun onItemClick(position: Int) {
-                    val action = characterList!![position]?.let {
+                    val action = characterList1!![position]?.let {
                         //val characterId = it.getCharacterId()
 
                         ListFragmentDirections.actionListFragmentToDetailFragment(
@@ -165,7 +154,7 @@ class ListFragment : Fragment(R.layout.fragment_list) {
                 val searchText = newText!!.lowercase(Locale.getDefault())
                 if (searchText.isNotEmpty()) {
                     characterList!!.forEach {
-                        if (it!!.name.toLowerCase(Locale.getDefault()).contains(searchText)) {
+                        if (it!!.name.toLowerCase(Locale.getDefault()).contains(searchText)||it!!.status.toLowerCase(Locale.getDefault()).contains(searchText)) {
                             tempArrayList.add(it)
                         }
                     }
