@@ -2,6 +2,11 @@
     <string name="app_name">RickandMorty</string>
 
     <string name="search">Search</string>
-
-
+    <string name="name">NAME</string>
+    <string name="status">STATUS</string>
+    <string name="species">SPECIES</string>
+    <string name="episode">NUMBER of EPISODE:</string>
+    <string name="gender">GENDER:</string>
+    <string name="origin_location_name">ORIGIN LOCATION NAME:</string>
+    <string name="last_location">LAST LOCATION:</string>
 </resources>
