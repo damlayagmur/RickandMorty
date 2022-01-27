@@ -9,7 +9,7 @@
 
 # Rick and Morty API
 
-App to consume The Rick and Morty API in kotlin with a costum filter.
+App to consume The Rick and Morty API in kotlin.
 
 
 <p align"center">
@@ -27,11 +27,13 @@ App to consume The Rick and Morty API in kotlin with a costum filter.
 - LiveData and ViewModel 
 - Coroutines
 - Picasso
+- SQLite
 
 # Features
 
 - Get characters by: image, name, status and species
 - Character Detail Page by: image, name, status, species, number of episodes, gender, origin location name and last know location name
+- Two different display mode: List and GridView
 
 # Credits
 - [The Rick and Morty API](https://rickandmortyapi.com/)
