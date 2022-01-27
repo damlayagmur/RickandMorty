@@ -35,7 +35,7 @@ class CharacterRepository @Inject constructor(
         }
     }.flowOn(dispatcher)
 
-    fun getInfo() = flow {
+    /*fun getInfo() = flow {
         emit(State.Loading<List<String?>?>())
 
         try {
@@ -51,5 +51,5 @@ class CharacterRepository @Inject constructor(
         } catch (e: Exception) {
             emit(State.error(e.localizedMessage))
         }
-    }.flowOn(dispatcher)
+    }.flowOn(dispatcher)*/
 }

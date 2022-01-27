@@ -15,7 +15,6 @@ import com.damlayagmur.rickandmorty.util.viewBinding
 import com.squareup.picasso.Picasso
 import jp.wasabeef.picasso.transformations.CropCircleTransformation
 
-
 class DetailFragment : Fragment(R.layout.fragment_detail) {
 
     private val binding by viewBinding(FragmentDetailBinding::bind)
@@ -36,6 +35,7 @@ class DetailFragment : Fragment(R.layout.fragment_detail) {
         val origin = args.origin
         val location = args.location
         var id = args.id
+
         binding.detailName.text = name
         binding.detailStatus.text = status
         binding.detailSpecies.text = species
@@ -46,9 +46,9 @@ class DetailFragment : Fragment(R.layout.fragment_detail) {
         Picasso.get().load(image).transform(CropCircleTransformation()).into(binding.imageView)
         favButton = binding.favButton
 
-
         favButton.setOnClickListener {
-            var cursor2 = db.getName()
+            favButton.setBackgroundResource(favorite_red)
+            var cursor2 = db.checkDB(id)
             if (cursor2!!.count == null) {
                 db.addFav(id)
                 showToast(requireContext(), "şimdi eklendi$id")

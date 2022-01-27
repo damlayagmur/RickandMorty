@@ -27,17 +27,14 @@ import java.util.*
 @AndroidEntryPoint
 class ListFragment : Fragment(R.layout.fragment_list) {
 
-    private lateinit var recyclerView: RecyclerView
-    private var characterList: List<Result?>? = null
-    private lateinit var tempArrayList: ArrayList<Result?>
-    private lateinit var characterAdapter: CharacterAdapter
-    private lateinit var gridLayoutManager: GridLayoutManager
-    private var spanCount = 1
-    //var baseContext: Context? = null
-
     private val binding by viewBinding(FragmentListBinding::bind)
-
     private val characterViewModel: CharacterViewModel by viewModels()
+    private lateinit var gridLayoutManager: GridLayoutManager
+    private lateinit var characterAdapter: CharacterAdapter
+    private lateinit var tempArrayList: ArrayList<Result?>
+    private var characterList: List<Result?>? = null
+    private lateinit var recyclerView: RecyclerView
+    private var spanCount = 1
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -87,7 +84,7 @@ class ListFragment : Fragment(R.layout.fragment_list) {
             recyclerView.adapter = characterAdapter
 
             characterAdapter.setOnItemClickListener(object :
-                CharacterAdapter.onAdapterItemClickListener {
+                CharacterAdapter.OnAdapterItemClickListener {
                 override fun onItemClick(position: Int) {
                     val action = characterList1!![position]?.let {
                         ListFragmentDirections.actionListFragmentToDetailFragment(
@@ -147,7 +144,7 @@ class ListFragment : Fragment(R.layout.fragment_list) {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (item.itemId == R.id.item_grid) {
             switchLayout()
-            //switchIcon(item)
+            switchIcon(item)
         }
         return super.onOptionsItemSelected(item)
     }
@@ -166,11 +163,6 @@ class ListFragment : Fragment(R.layout.fragment_list) {
             item.setIcon(R.drawable.list_mode)
         }
     }
-
-/*override fun onAttach(context: Context) {
-    super.onAttach(context)
-    baseContext = context
-}*/
 }
 
 

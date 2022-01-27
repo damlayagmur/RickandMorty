@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ProgressBar
 import android.widget.Toast
-import androidx.recyclerview.widget.GridLayoutManager
 
 fun ViewGroup.layoutInflaterFactory(): LayoutInflater = LayoutInflater.from(context)
 fun ViewGroup.gridInflaterFactory(): LayoutInflater = LayoutInflater.from(context)

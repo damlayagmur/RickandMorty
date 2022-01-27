@@ -24,9 +24,9 @@ class CharacterViewModel @Inject constructor(
         get() = _characterList
 
 
-    private val _infoList = MutableLiveData<State<List<Info?>?>>()
+    /*private val _infoList = MutableLiveData<State<List<Info?>?>>()
     val infoListLiveData: LiveData<State<List<Info?>?>>
-        get() = _infoList
+        get() = _infoList*/
 
     fun getCharacter() {
         viewModelScope.launch {
@@ -36,11 +36,11 @@ class CharacterViewModel @Inject constructor(
         }
     }
 
-    fun getInfo() {
+    /*fun getInfo() {
         viewModelScope.launch {
             characterRepository.getInfo().collect {
                 _infoList.value = it as State<List<Info?>?>?
             }
         }
-    }
+    }*/
 }

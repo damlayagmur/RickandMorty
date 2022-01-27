@@ -20,14 +20,14 @@ class CharacterAdapter(
     private val LIST_ITEM = 0
     private val SPAN_COUNT_ONE: Int = 1
     private val SPAN_COUNT_TWO: Int = 2
-    private lateinit var mListener: onAdapterItemClickListener
+    private lateinit var mListener: OnAdapterItemClickListener
 
 
-    interface onAdapterItemClickListener {
+    interface OnAdapterItemClickListener {
         fun onItemClick(position: Int)
     }
 
-    fun setOnItemClickListener(listener: onAdapterItemClickListener) {
+    fun setOnItemClickListener(listener: OnAdapterItemClickListener) {
 
         mListener = listener
     }
@@ -75,7 +75,7 @@ class CharacterAdapter(
 
     inner class CharacterViewHolder(
         view: View,
-        listener: onAdapterItemClickListener
+        listener: OnAdapterItemClickListener
     ) :
         RecyclerView.ViewHolder(view) {
         val characterImage: ImageView = view.findViewById(R.id.imageView_photo)
