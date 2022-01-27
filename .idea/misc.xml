@@ -3,7 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="../../../../layout/custom_preview.xml" value="0.4358974358974359" />
+        <entry key="app/src/main/res/drawable/detail_rectangle.xml" value="0.37846153846153846" />
         <entry key="app/src/main/res/drawable/edit_text_background.xml" value="0.39166666666666666" />
+        <entry key="app/src/main/res/drawable/favorite_red.xml" value="0.4369230769230769" />
         <entry key="app/src/main/res/drawable/ic_baseline_access_alarms_24.xml" value="0.387037037037037" />
         <entry key="app/src/main/res/drawable/ic_baseline_filter_list_24.xml" value="0.387037037037037" />
         <entry key="app/src/main/res/drawable/ic_baseline_search_24.xml" value="0.387037037037037" />
@@ -13,8 +16,12 @@
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.3611111111111111" />
         <entry key="app/src/main/res/layout/fragment_detail.xml" value="0.27291666666666664" />
         <entry key="app/src/main/res/layout/fragment_list.xml" value="0.27291666666666664" />
+        <entry key="app/src/main/res/layout/grid_character.xml" value="0.338768115942029" />
         <entry key="app/src/main/res/layout/list_character.xml" value="0.4119791666666667" />
         <entry key="app/src/main/res/menu/menu_item.xml" value="0.4276041666666667" />
+        <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.31614583333333335" />
+        <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher1.xml" value="0.31614583333333335" />
+        <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.31614583333333335" />
       </map>
     </option>
   </component>

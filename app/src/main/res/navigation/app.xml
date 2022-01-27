@@ -19,5 +19,36 @@
         <action
             android:id="@+id/action_detailFragment_to_listFragment"
             app:destination="@id/listFragment" />
+        <argument
+            android:name="name"
+            app:argType="string"
+            android:defaultValue="null" />
+        <argument
+            android:name="status"
+            app:argType="string"
+            android:defaultValue="null" />
+        <argument
+            android:name="imaege"
+            app:argType="string"
+            android:defaultValue="null" />
+        <argument
+            android:name="episode"
+            app:argType="integer" />
+        <argument
+            android:name="species"
+            app:argType="string" />
+        <argument
+            android:name="gender"
+            app:argType="string"
+            android:defaultValue="null" />
+        <argument
+            android:name="origin"
+            app:argType="string" />
+        <argument
+            android:name="location"
+            app:argType="string" />
+        <argument
+            android:name="id"
+            app:argType="integer" />
     </fragment>
 </navigation>

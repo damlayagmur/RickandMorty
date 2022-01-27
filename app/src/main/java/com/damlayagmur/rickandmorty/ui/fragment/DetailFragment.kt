@@ -13,7 +13,6 @@ import com.damlayagmur.rickandmorty.databinding.FragmentDetailBinding
 import com.damlayagmur.rickandmorty.util.showToast
 import com.damlayagmur.rickandmorty.util.viewBinding
 import com.squareup.picasso.Picasso
-import android.widget.ImageView
 import jp.wasabeef.picasso.transformations.CropCircleTransformation
 
 

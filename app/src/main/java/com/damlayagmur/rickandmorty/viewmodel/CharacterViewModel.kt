@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.damlayagmur.rickandmorty.model.Character
+import com.damlayagmur.rickandmorty.model.Info
 import com.damlayagmur.rickandmorty.model.Result
 import com.damlayagmur.rickandmorty.model.State
 import com.damlayagmur.rickandmorty.repository.CharacterRepository
@@ -23,10 +23,23 @@ class CharacterViewModel @Inject constructor(
     val characterListLiveData: LiveData<State<List<Result?>?>>
         get() = _characterList
 
+
+    private val _infoList = MutableLiveData<State<List<Info?>?>>()
+    val infoListLiveData: LiveData<State<List<Info?>?>>
+        get() = _infoList
+
     fun getCharacter() {
         viewModelScope.launch {
             characterRepository.getCharacterInfo().collect {
-                _characterList.value = it
+                _characterList.value = it as State<List<Result?>?>?
+            }
+        }
+    }
+
+    fun getInfo() {
+        viewModelScope.launch {
+            characterRepository.getInfo().collect {
+                _infoList.value = it as State<List<Info?>?>?
             }
         }
     }

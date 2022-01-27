@@ -6,9 +6,6 @@ import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
-import dagger.hilt.android.components.ActivityComponent
-import dagger.hilt.android.components.ViewModelComponent
-import dagger.hilt.android.scopes.ViewModelScoped
 import dagger.hilt.components.SingletonComponent
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
@@ -24,7 +21,7 @@ object NetworkModule {
 
     @Provides
     @Singleton
-    fun provideCharacterService(moshi: Moshi):CharacterService{
+    fun provideCharacterService(moshi: Moshi): CharacterService {
         val retrofit = Retrofit.Builder().baseUrl("https://rickandmortyapi.com")
             .addConverterFactory(MoshiConverterFactory.create(moshi)).build()
         return retrofit.create(CharacterService::class.java)

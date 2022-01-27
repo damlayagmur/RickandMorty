@@ -1,32 +1,33 @@
 package com.damlayagmur.rickandmorty.adapter
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.damlayagmur.rickandmorty.R
-import com.damlayagmur.rickandmorty.databinding.GridCharacterBinding
-import com.damlayagmur.rickandmorty.databinding.ListCharacterBinding
 import com.damlayagmur.rickandmorty.model.Result
-import com.damlayagmur.rickandmorty.util.layoutInflaterFactory
 import com.squareup.picasso.Picasso
 
-class CharacterAdapter(private val characterList: List<Result?>?) :
+class CharacterAdapter(
+    private var characterList: List<Result?>?,
+    private val mLayout: GridLayoutManager
+) :
     RecyclerView.Adapter<CharacterAdapter.CharacterViewHolder>() {
 
     private val LIST_ITEM = 0
-    private val GRID_ITEM = 1
+    private val SPAN_COUNT_ONE: Int = 1
+    private val SPAN_COUNT_TWO: Int = 2
+    private lateinit var mListener: onAdapterItemClickListener
 
-    private lateinit var mListener: onItemClickListener
 
-    interface onItemClickListener{
+    interface onAdapterItemClickListener {
         fun onItemClick(position: Int)
     }
 
-    fun setOnItemClickListener(listener: onItemClickListener){
+    fun setOnItemClickListener(listener: onAdapterItemClickListener) {
 
         mListener = listener
     }
@@ -35,41 +36,62 @@ class CharacterAdapter(private val characterList: List<Result?>?) :
     //private lateinit var binding2: GridCharacterBinding
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CharacterViewHolder {
-        val view: View
-        if (viewType == GRID_ITEM) {
+        var view: View
+        if (viewType == LIST_ITEM) {
             //binding = ListCharacterBinding.inflate(parent.layoutInflaterFactory(), parent, false)
-            view = LayoutInflater.from(parent.context).inflate(R.layout.list_character, parent, false);
+            view =
+                LayoutInflater.from(parent.context).inflate(R.layout.grid_character, parent, false)
         } else {
             //binding = ListCharacterBinding.inflate(parent.layoutInflaterFactory(), parent, false)
-            view = LayoutInflater.from(parent.context).inflate(R.layout.grid_character, parent, false);
-
+            view =
+                LayoutInflater.from(parent.context).inflate(R.layout.list_character, parent, false)
         }
-        return CharacterViewHolder(view,mListener)
+        return CharacterViewHolder(view,  mListener)
     }
 
     override fun onBindViewHolder(holder: CharacterViewHolder, position: Int) {
         val currentCharacter = characterList!![position]
-        //Picasso.get().load(currentCharacter?.image).into(holder.characterImage)
+        Picasso.get().load(currentCharacter?.image).into(holder.characterImage)
         holder.characterName.text = currentCharacter?.name
-        //holder.characterStatus.text = currentCharacter?.status
+        holder.characterStatus.text = currentCharacter?.status
+        holder.characterSpecies.text = currentCharacter?.species
         //holder.characterSpecies.text = currentCharacter?.species
+        //holder.favButton.setBackgroundResource(R.drawable.favorite_red)
     }
 
     override fun getItemCount(): Int {
         return characterList!!.size
     }
 
-    inner class CharacterViewHolder(view: View, listener: onItemClickListener) :
+    override fun getItemViewType(position: Int): Int {
+        val spanCount = mLayout.spanCount
+        if (spanCount == 1) {
+            return SPAN_COUNT_TWO
+        } else {
+            SPAN_COUNT_ONE
+        }
+        return super.getItemViewType(position)
+    }
+
+    inner class CharacterViewHolder(
+        view: View,
+        listener: onAdapterItemClickListener
+    ) :
         RecyclerView.ViewHolder(view) {
-        //val characterImage: ImageView = view.findViewById(R.id.imageView_photo)
+        val characterImage: ImageView = view.findViewById(R.id.imageView_photo)
         val characterName: TextView = view.findViewById(R.id.textView_name)
+        val characterStatus: TextView = view.findViewById(R.id.textView_status)
+        val characterSpecies: TextView = view.findViewById(R.id.textView_species)
+        //val favButton: Button = view.findViewById(R.id.favBtn)
         //val characterStatus: TextView = binding.textViewStatus
         //val characterSpecies: TextView = binding.textViewSpecies
 
         init {
-            view.setOnClickListener{
+            view.setOnClickListener {
                 listener.onItemClick(adapterPosition)
+
             }
         }
     }
+
 }

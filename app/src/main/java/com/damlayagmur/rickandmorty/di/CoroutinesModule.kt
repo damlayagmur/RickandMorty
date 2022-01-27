@@ -18,8 +18,4 @@ object CoroutinesModule {
     @IoDispatcher
     @Provides
     fun providesIODispatcher(): CoroutineDispatcher = Dispatchers.IO
-
-    /*@MainDispatcher
-    @Provides
-    fun providesMainDispatcher(): CoroutineDispatcher = Dispatchers.Main*/
 }
