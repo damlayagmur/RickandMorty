@@ -13,7 +13,7 @@ App to consume The Rick and Morty API in kotlin.
 
 
 <p align"center">
-<img src="arts/list_fragment.png" width="211" height="423" />
+<img src="screenshots/Character Detail Page.png" width="211" height="423" />
 <img src="arts/filter_fragment.png" width="211" height="423"  />
 <img src="arts/details_fragment.png" width="211" height="423"  />
 </p>
