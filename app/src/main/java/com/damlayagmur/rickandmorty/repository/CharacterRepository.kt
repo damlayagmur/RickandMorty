@@ -34,22 +34,4 @@ class CharacterRepository @Inject constructor(
             emit(State.error(e.localizedMessage))
         }
     }.flowOn(dispatcher)
-
-    /*fun getInfo() = flow {
-        emit(State.Loading<List<String?>?>())
-
-        try {
-            val apiResponse = characterService.getCharacterInfo()
-            val characterResponse = apiResponse.body()
-
-            if (apiResponse.isSuccessful) {
-                emit(characterResponse?.let { State.success(it.info.next) }
-                )
-            } else {
-                emit(State.error(apiResponse.message()))
-            }
-        } catch (e: Exception) {
-            emit(State.error(e.localizedMessage))
-        }
-    }.flowOn(dispatcher)*/
 }

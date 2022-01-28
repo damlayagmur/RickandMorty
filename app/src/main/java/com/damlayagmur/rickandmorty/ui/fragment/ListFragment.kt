@@ -48,18 +48,6 @@ class ListFragment : Fragment(R.layout.fragment_list) {
         observeLiveData()
     }
 
-    /*private fun nextPage(): Int {
-        if (characterList != null) {
-            var lastCharacterResp = characterList!!.last()
-            if (lastCharacterResp != null) {
-                if (lastCharacterResp.info.next != null) {
-                    page += 1
-                }
-            }
-        }
-        return page
-    }*/
-
     private fun observeLiveData() {
         characterViewModel.getCharacter()
         characterViewModel.characterListLiveData.observe(viewLifecycleOwner, Observer { state ->
@@ -144,7 +132,7 @@ class ListFragment : Fragment(R.layout.fragment_list) {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (item.itemId == R.id.item_grid) {
             switchLayout()
-            switchIcon(item)
+            //switchIcon(item)
         }
         return super.onOptionsItemSelected(item)
     }

@@ -33,7 +33,6 @@ class CharacterAdapter(
     }
 
     //private lateinit var binding: ListCharacterBinding
-    //private lateinit var binding2: GridCharacterBinding
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CharacterViewHolder {
         var view: View
@@ -42,11 +41,10 @@ class CharacterAdapter(
             view =
                 LayoutInflater.from(parent.context).inflate(R.layout.grid_character, parent, false)
         } else {
-            //binding = ListCharacterBinding.inflate(parent.layoutInflaterFactory(), parent, false)
             view =
                 LayoutInflater.from(parent.context).inflate(R.layout.list_character, parent, false)
         }
-        return CharacterViewHolder(view,  mListener)
+        return CharacterViewHolder(view, mListener)
     }
 
     override fun onBindViewHolder(holder: CharacterViewHolder, position: Int) {
@@ -55,8 +53,6 @@ class CharacterAdapter(
         holder.characterName.text = currentCharacter?.name
         holder.characterStatus.text = currentCharacter?.status
         holder.characterSpecies.text = currentCharacter?.species
-        //holder.characterSpecies.text = currentCharacter?.species
-        //holder.favButton.setBackgroundResource(R.drawable.favorite_red)
     }
 
     override fun getItemCount(): Int {
@@ -82,9 +78,6 @@ class CharacterAdapter(
         val characterName: TextView = view.findViewById(R.id.textView_name)
         val characterStatus: TextView = view.findViewById(R.id.textView_status)
         val characterSpecies: TextView = view.findViewById(R.id.textView_species)
-        //val favButton: Button = view.findViewById(R.id.favBtn)
-        //val characterStatus: TextView = binding.textViewStatus
-        //val characterSpecies: TextView = binding.textViewSpecies
 
         init {
             view.setOnClickListener {
@@ -93,5 +86,4 @@ class CharacterAdapter(
             }
         }
     }
-
 }
