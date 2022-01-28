@@ -7,6 +7,7 @@ import android.widget.Button
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
 import com.damlayagmur.rickandmorty.R
+import com.damlayagmur.rickandmorty.R.drawable.favorite_black
 import com.damlayagmur.rickandmorty.R.drawable.favorite_red
 import com.damlayagmur.rickandmorty.database.FavoriteDB
 import com.damlayagmur.rickandmorty.databinding.FragmentDetailBinding
@@ -20,12 +21,13 @@ class DetailFragment : Fragment(R.layout.fragment_detail) {
     private val binding by viewBinding(FragmentDetailBinding::bind)
     private val args: DetailFragmentArgs by navArgs()
     private lateinit var favButton: Button
+    private lateinit var db: FavoriteDB
 
     @SuppressLint("Range")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        db = FavoriteDB(requireContext())
 
-        val db = FavoriteDB(requireContext())
         val name = args.name
         val status = args.status
         val image = args.imaege
@@ -45,33 +47,31 @@ class DetailFragment : Fragment(R.layout.fragment_detail) {
         binding.detailLocation.text = location
         Picasso.get().load(image).transform(CropCircleTransformation()).into(binding.imageView)
         favButton = binding.favButton
-
+        updateFavButton(id)
         favButton.setOnClickListener {
-            favButton.setBackgroundResource(favorite_red)
-            var cursor2 = db.checkDB(id)
-            if (cursor2!!.count == null) {
-                db.addFav(id)
-                showToast(requireContext(), "şimdi eklendi$id")
-                favButton.setBackgroundResource(favorite_red)
+            if (isFav(id)) {
+                db.deleteFav(id)
+                favButton.setBackgroundResource(favorite_black)
             } else {
-                while (cursor2!!.moveToNext()) {
-                    var aa =
-                        cursor2!!.getString(cursor2.getColumnIndex(FavoriteDB.CHARACTER_ID_COL))
-                    if (aa.toString() == id.toString()) {
-                        db.addFav(id)
-                        showToast(requireContext(), "added $id")
-                        favButton.setBackgroundResource(favorite_red)
-                    } else {
-                        favButton.setBackgroundResource(R.drawable.favorite_black)
-                    }
-                }
+                db.addFav(id)
+                favButton.setBackgroundResource(favorite_red)
             }
-
-            /*for(i in 1..17){
-                db.checkDB(i)
-            }*/
-
-            cursor2.close()
         }
+    }
+
+    private fun updateFavButton(id: Int) {
+        if (isFav(id)) {
+            favButton.setBackgroundResource(favorite_red)
+        } else {
+            favButton.setBackgroundResource(favorite_black)
+        }
+    }
+
+
+    private fun isFav(id: Int): Boolean {
+        val cursor = db.checkDB(id)
+        val isFav = cursor!!.count != 0
+        cursor.close()
+        return isFav
     }
 }

@@ -37,6 +37,12 @@ class FavoriteDB(context: Context?) :
         )
     }
 
+    fun deleteFav(characterId: Int) {
+        val db = this.readableDatabase
+        db.execSQL("DELETE FROM $TABLE_NAME WHERE $CHARACTER_ID_COL=$characterId")
+    }
+
+
     companion object {
         private val DATABASE_NAME = "FavoriteDB"
         private val DATABASE_VERSION = 1
