@@ -9,7 +9,7 @@
 
 # Rick and Morty API
 
-App to consume The Rick and Morty API in kotlin.
+App to consume The Rick and Morty API in Kotlin.
 
 
 <p align"center">
